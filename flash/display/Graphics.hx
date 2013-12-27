@@ -4,6 +4,7 @@ package flash.display;
 import flash.geom.Matrix;
 import flash.Lib;
 import openfl.display.Tilesheet;
+import openfl.display.Shader;
 
 
 class Graphics {
@@ -211,6 +212,11 @@ class Graphics {
 		lime_gfx_move_to (__handle, x, y);
 		
 	}
+
+	public function attachShader(?shader:Shader)
+	{
+		lime_gfx_attach_shader(__handle, (shader == null ? null : shader.__handle ));
+	}
 	
 	
 	@:noCompletion @:deprecated public static inline function RGBA (rgb:Int, alpha:Int = 0xff):Int {
@@ -248,6 +254,6 @@ class Graphics {
 	private static var lime_gfx_draw_points = Lib.load ("lime", "lime_gfx_draw_points", -1);
 	private static var lime_gfx_draw_round_rect = Lib.load ("lime", "lime_gfx_draw_round_rect", -1);
 	private static var lime_gfx_draw_triangles = Lib.load ("lime", "lime_gfx_draw_triangles", -1);
-	
+	private static var lime_gfx_attach_shader = Lib.load("lime", "lime_gfx_attach_shader", 2);
 	
 }
